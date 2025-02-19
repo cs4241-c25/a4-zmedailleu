@@ -11,9 +11,6 @@ function App() {
     const [currentUser, setCurrentUser] = useState("nobody");
 
     useEffect(() => {
-        if (!localStorage.getItem("currentUser")) {
-            localStorage.setItem("currentUser", "nobody");
-        }
         const loggedInUser = window.localStorage.getItem("currentUser");
         if(loggedInUser !== "nobody") {
             setCurrentUser(loggedInUser);
