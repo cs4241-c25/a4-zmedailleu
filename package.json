@@ -1,0 +1,35 @@
+{
+  "name": "a4-zmedailleu",
+  "version": "1.0.0",
+  "description": "Assignment A4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "Zachary Medailleu",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongodb": "^6.13.0",
+    "passport": "^0.7.0",
+    "passport-github": "^1.1.0",
+    "passport-github2": "^0.1.12",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
+  }
+}

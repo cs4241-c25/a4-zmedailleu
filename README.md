@@ -29,6 +29,8 @@ your hosting link e.g. http://a4-wilsonwong.glitch.me
 
 Include a very brief summary of your project here and what you changed / added to assignment #3. 
 
-I used React components, React Bootstrap as the framework, MongoDB, Express, and Passport GitHub to create this website.
+I used React components, React Bootstrap as the framework, MongoDB, Express, and Passport GitHub to create this website. 
+
+To prepare teh front end, type "npm run build" in the terminal.
 
 Unlike previous assignments, this assignment will be solely graded on whether or not you successfully complete it. Partial credit will be generously given.

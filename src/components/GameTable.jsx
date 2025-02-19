@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function GameTable() {
     //TEST DELETE LATER
-    window.localStorage.setItem("currentUser", "Kramer");
+    //window.localStorage.setItem("currentUser", "Kramer");
     const currentUser = window.localStorage.getItem("currentUser");
     const [games, setGames] = useState([]);
     const [editedRowID, setEditedRowID] = useState(null);
@@ -17,22 +17,22 @@ function GameTable() {
         getData();
     });
 
-    // function modifyRow(row) {
-    //     setEditedRowID(row._id);
-    //     setEditedRow(row);
-    // }
-    //
-    // const handleInputChange = (e, key) => {
-    //     setEditedRow(row => ({
-    //         ...row, [key]:e.target.value
-    //     }));
-    // }
-    //
-    //
-    // async function saveChanges(id) {
-    //     axios.put(`/modify/${id}`, editedRow);
-    //     setEditedRowID(null);
-    // }
+    function modifyRow(row) {
+        setEditedRowID(row._id);
+        setEditedRow(row);
+    }
+
+    const handleInputChange = (e, key) => {
+        setEditedRow(row => ({
+            ...row, [key]:e.target.value
+        }));
+    }
+
+
+    async function saveChanges(row) {
+        await axios.put(`/modify`, editedRow);
+        setEditedRowID(null);
+    }
 
 
     return (
@@ -64,7 +64,7 @@ function GameTable() {
                                     <td><input type="date" value={editedRow.completiondate} onChange={(e) => handleInputChange(e, "completiondate")}/></td>
                                     <td><input type="text" value={editedRow.rating} onChange={(e) => handleInputChange(e, "rating")}/></td>
                                     <td>
-                                        <button onClick={() => saveChanges(row._id)}>Save</button>
+                                        <button onClick={() => saveChanges(row)}>Save</button>
                                     </td>
                                 </>
                             ) : (
@@ -75,9 +75,9 @@ function GameTable() {
                                     <td>{row.completiondate}</td>
                                     <td>{row.rating}</td>
                                     <td>{calculateDaysPlayed(row.startdate, row.completiondate)}</td>
-                                    {/*<td>*/}
-                                    {/*    <button onClick={() => modifyRow(row)}>Modify</button>*/}
-                                    {/*</td>*/}
+                                    <td>
+                                        <button onClick={() => modifyRow(row)}>Modify</button>
+                                    </td>
                                     <td>
                                         <button onClick={() => deleteRow(row._id)}>Delete</button>
                                     </td>
