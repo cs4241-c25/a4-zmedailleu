@@ -57,21 +57,6 @@ app.get("/", (req, res) => {
     res.sendFile(join(__dirname, "dist", "index.html"));
 });
 
-app.get("/login", (req, res) => {
-    // User is logged in
-    if (req.user) {
-        res.redirect("/");
-    } else {
-        // User is not logged in
-        res.sendFile(__dirname + "login.html");
-    }
-});
-
-app.get("/logout", (req, res) => {
-    req.logout(() => { });
-    res.redirect('/');
-});
-
 app.get('/getdata', async (req, res) => {
     const currentUser = req.query.user;
     const appdata = await collection.find({user: currentUser}).toArray();
@@ -103,7 +88,6 @@ app.post('/delete/:id', (req, res) => {
 app.put('/modify', async (req, res) => {
     const id = req.body._id;
     const modifiedRow = {name: req.body.name, platform: req.body.platform, startdate: req.body.startdate, completiondate: req.body.completiondate, rating: req.body.rating, user: req.body.user};
-    console.log(modifiedRow);
 
     const deleteData = collection.deleteOne({_id: new ObjectId(id)});
     const modifiedData = await collection.insertOne(modifiedRow);

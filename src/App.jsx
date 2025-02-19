@@ -19,8 +19,6 @@ function App() {
             setCurrentUser(loggedInUser);
         }
     }, [])
-    console.log("currentuser equals", currentUser);
-    console.log(currentUser === "nobody");
 
 
     if (currentUser !== "nobody") {

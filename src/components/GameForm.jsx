@@ -12,12 +12,6 @@ function GameForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const object = {name: name, platform: platform, startdate: startDate, completiondate: completionDate, rating: rating, user: currentUser};
-        console.log(object);
-        console.log("Name: " + name);
-        console.log("Platform: " + platform);
-        console.log("Start Date: " + startDate);
-        console.log("End Date: " + completionDate);
-        console.log("Rating: " + rating);
         axios.post("/submit", object);
     };
 

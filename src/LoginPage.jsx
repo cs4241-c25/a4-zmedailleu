@@ -10,7 +10,6 @@ function LoginPage({setCurrentUser}) {
         e.preventDefault();
         const allUsers = await axios.get("/getusers");
         const data = allUsers.data;
-        console.log(data.length);
         for (let i = 0; i < data.length; i++) {
             if (username === data[i].username && password === data[i].password) {
                 localStorage.setItem("currentUser", username);
