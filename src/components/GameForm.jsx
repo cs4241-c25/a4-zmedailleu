@@ -73,8 +73,6 @@ function GameForm() {
 
                 <button>Submit</button>
             </form>
-            <br/><br/><br/>
-            <button onClick={() => localStorage.setItem("currentUser", null)}>Log Out</button>
         </div>
     )
 }

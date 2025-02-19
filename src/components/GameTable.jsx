@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function GameTable() {
-    //TEST DELETE LATER
-    //window.localStorage.setItem("currentUser", "Kramer");
     const currentUser = window.localStorage.getItem("currentUser");
     const [games, setGames] = useState([]);
     const [editedRowID, setEditedRowID] = useState(null);

@@ -4,23 +4,26 @@ import Title from './components/Title.jsx'
 import GameForm from './components/GameForm.jsx'
 import GameTable from './components/GameTable.jsx'
 import LoginPage from './LoginPage.jsx'
+import LogOutButton from "./components/LogOutButton";
 
 function App() {
     const x = 1;
-    const [currentUser, setCurrentUser] = useState(null);
-    window.localStorage.setItem("currentUser", "Kramer");
+    const [currentUser, setCurrentUser] = useState("nobody");
 
-    // useEffect(() => {
-    //     const loggedInUser = window.localStorage.getItem("currentUser");
-    //     if(loggedInUser !== null) {
-    //         setCurrentUser(loggedInUser);
-    //     }
-    // }, [])
-    // console.log("currentuser equals", currentUser);
-    // console.log(currentUser === null);
+    useEffect(() => {
+        if (!localStorage.getItem("currentUser")) {
+            localStorage.setItem("currentUser", "nobody");
+        }
+        const loggedInUser = window.localStorage.getItem("currentUser");
+        if(loggedInUser !== "nobody") {
+            setCurrentUser(loggedInUser);
+        }
+    }, [])
+    console.log("currentuser equals", currentUser);
+    console.log(currentUser === "nobody");
 
 
-    if (currentUser === null) {
+    if (currentUser !== "nobody") {
         return (
             <div className="d-flex flex-column align-items-center">
                 <Title />
@@ -28,12 +31,13 @@ function App() {
                     <GameForm />
                     <GameTable />
                 </div>
+                <LogOutButton setCurrentUser={setCurrentUser}/>
             </div>
         )
     }
     else {
         return (
-            <LoginPage />
+            <LoginPage setCurrentUser={setCurrentUser}/>
         )
     }
 }
